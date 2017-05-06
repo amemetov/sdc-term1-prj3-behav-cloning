@@ -63,9 +63,11 @@ def telemetry(sid, data):
 
 
         image = Image.open(BytesIO(base64.b64decode(imgString)))
+        # Make prediction for steering and speed
         steering_angle, pred_speed = predict(model, np.array(image))
-
+        # Set predicted speed as desired
         controller.set_desired(pred_speed)
+        # update throttle depending on the current speed and predicted speed
         throttle = controller.update(float(speed))
         print(steering_angle, throttle, speed, pred_speed)
         send_control(steering_angle, throttle)
