@@ -244,7 +244,7 @@ This difference produces the **difference between steering_loss and speed_loss b
 
 For example, at the beginning of the training process, steering_loss starts from about 0.2 and speed_loss starts from about 400.
 
-Cause *the final loss is the sum of steering_loss and speed_loss*, it leads to improving speed_loss, but not steering_loss:
+Cause **the final loss is the sum of steering_loss and speed_loss**, it leads to improving speed_loss, but not steering_loss:
 **steering_loss increases** up to 30 and **speed_loss decreases** to 250.
 
 To fix it I **normalize speed** values to the range [-1, 1] ([model2.py](model2.py) line 141)
