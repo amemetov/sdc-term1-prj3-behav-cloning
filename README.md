@@ -238,16 +238,16 @@ But I did not manage to find a good working solution, so it is my the first goal
 **Update regarding Model2 (2017/05/07):**
 
 The range of the steering values is [-1, 1] and the range of the speed values is [0, 30]
-(The maximum speed value indeed a bit more).
+(The maximum speed value indeed is a bit greater).
 
 This difference produces the **difference between steering_loss and speed_loss by an order of magnitude**.
 
 For example, at the beginning of the training process, steering_loss starts from about 0.2 and speed_loss starts from about 400.
 
-Cause the final loss is the sum of steering_loss and speed_loss, it leads to improving speed_loss, but not steering_loss:
+Cause *the final loss is the sum of steering_loss and speed_loss*, it leads to improving speed_loss, but not steering_loss:
 **steering_loss increases** up to 30 and **speed_loss decreases** to 250.
 
-To fix it I **normalize speed values to the range [-1, 1]** ([model2.py](model2.py) line 141)
+To fix it I **normalize speed** values to the range [-1, 1] ([model2.py](model2.py) line 141)
 and **convert back speed** after prediction to the origin range [0, 30] ([model2.py](model2.py) line 148).
 
 After this changes steering_loss and speed_loss both start roughly from 0.2.
