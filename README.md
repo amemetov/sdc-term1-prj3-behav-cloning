@@ -101,7 +101,7 @@ During traning I found that this model had a low mean squared error on the train
 
 This implied that the model was overfitting. To combat the overfitting, I modified the model so that it used Dropout.
 By using GridSearch I found out that dropout_prob=0.2 is a good value for this model and dataset.
-It allowed to get rid off overfitting.
+It allowed to get rid of overfitting.
 
 For non linearity I have tried ReLU and ELU and did not find a difference in the result (neither for convergence speed nor in the simulator).
 
@@ -127,7 +127,7 @@ The final model architecture ([model.py](model.py), method nvidia_model, lines 1
 consisted of a convolution neural network with the following layers and layer sizes:
 
 | Layer | Size |
-|---------------------- |-----------------------------------------------|--------------------------------| 
+|------ |------|
 | Normalization | (66, 200, 3) | 
 | Convolution2D - ReLU - Dropout | (31, 98, 24) |
 | Convolution2D - ReLU - Dropout | (14, 47, 36) |
@@ -185,13 +185,13 @@ I finally randomly **shuffled** the data set and put 10% of the data into a vali
 
 I used this training data for training the model. 
 The validation set helped determine if the model was over or under fitting. 
-I used EarlyStopping ([utils.py](utils.py) line 299) to stop training when validation mse has stopped improving.
+I used **EarlyStopping** ([utils.py](utils.py) line 299) to stop training when validation mse has stopped improving.
 I used an adam optimizer with the default learning rate 0.001 ([model.py](model.py) line 165).
 
 **The plot of train/valid loss history curves:**
 ![alt text][loss-curve]
 
-**The result** is presented in below video files:
+**The result** is presented in the next video files:
 * [Track1](model1-track1.mp4)
 * [Track2](model1-track1.mp4)
 * [Track1 on Youtube](https://www.youtube.com/watch?v=nvXf9Y3PsfQ)
@@ -218,7 +218,7 @@ python drive2.py model2.h5
 
 The model is the same NVidia model, but with 2 outs.
 
-**The result** is presented in below video files:
+**The result** is presented in the next video files:
 * [Model2 - Track1](model2-track1.mp4)
 * [Model2 - Track2](model2-track1.mp4)
 * [Model2 - Track1 on Youtube](https://www.youtube.com/watch?v=ym1SOPAOyo8)
